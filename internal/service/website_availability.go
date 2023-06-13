@@ -26,14 +26,18 @@ func (s *AvailabilityService) CheckAvailability() {
 
 	for {
 		for _, site := range s.webSite {
-			_, err := http.Get("http://" + site)
-			s.Lock()
-			if err == nil {
-				s.availability[site] = &domain.SiteAvailability{URL: site, LastTime: time.Now()}
-			} else {
-				delete(s.availability, site)
-			}
-			s.Unlock()
+
+			go func(site string) {
+				_, err := http.Get("http://" + site)
+				s.Lock()
+				if err == nil {
+					s.availability[site] = &domain.SiteAvailability{URL: site, LastTime: time.Now()}
+				} else {
+					delete(s.availability, site)
+				}
+				s.Unlock()
+			}(site)
+
 		}
 		time.Sleep(1 * time.Minute)
 	}
