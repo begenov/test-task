@@ -14,7 +14,7 @@ go run cmd/main.go
 ## Использование API
 ### Получить время доступа к определенному сайту
 
-```json
+```
 GET /api/v1/site/:url
 ```
 
@@ -22,7 +22,7 @@ GET /api/v1/site/:url
 
 Пример запроса:
 
-```json
+```
 GET /api/v1/site/example.com
 ```
 
@@ -37,7 +37,7 @@ GET /api/v1/site/example.com
 
 ```Получить имя сайта с минимальным временем доступа```
 
-```json
+```
 GET /api/v1/min-availability
 ```
 
@@ -51,7 +51,7 @@ GET /api/v1/min-availability
 
 ```Получить имя сайта с максимальным временем доступа```
 
-```json
+```
 GET /api/v1/max-availability
 ```
 
@@ -66,7 +66,7 @@ GET /api/v1/max-availability
 ## Получить статистику количества запросов
 ### Получить статистику по всем запросам
 
-```json
+```
 GET /api/v1/stats
 ```
 Пример ответа:
